@@ -221,13 +221,16 @@ public class DtsFragment extends Fragment implements View.OnClickListener {
 
     private void unbindServices() {
         if (mDTS != null) {
+            mDTS.stopPersonTracking();
             mDTS.stop();
             mDTS = null;
         }
         mVision.unbindService();
         mHead.unbindService();
+        mHeadPIDController.stop();
         mHeadBind = false;
         mBase.unbindService();
+        getActivity().finish();
     }
 
     ServiceBinder.BindStateListener mVisionBindStateListener = new ServiceBinder.BindStateListener() {
