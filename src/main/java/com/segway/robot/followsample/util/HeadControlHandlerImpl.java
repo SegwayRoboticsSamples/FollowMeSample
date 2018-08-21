@@ -16,7 +16,7 @@ public class HeadControlHandlerImpl implements HeadPIDController.HeadControlHand
 
     @Override
     public float getJointYaw() {
-        Angle angle = mHead.getYawRespectBase();
+        Angle angle = mHead.getHeadJointYaw();
         if (angle == null) {
             return 0;
         }
@@ -25,7 +25,7 @@ public class HeadControlHandlerImpl implements HeadPIDController.HeadControlHand
 
     @Override
     public float getJointPitch() {
-        Angle angle = mHead.getPitchRespectBase();
+        Angle angle = mHead.getHeadJointPitch();
         if (angle == null) {
             return 0;
         }
