@@ -130,8 +130,10 @@ public class FollowMePresenter {
         startTime = System.currentTimeMillis();
         mCurrentState = RobotStateType.INITIATE_TRACK;
         if (isObstacleAvoidanceOpen) {
+            // Loomo will detect obstacles and avoid them when invoke startPlannerPersonTracking()
             mDts.startPlannerPersonTracking(null, mPersonTrackingProfile, 60 * 1000 * 1000, mPersonTrackingWithPlannerListener);
         } else {
+            // Without obstacle detection and avoidance
             mDts.startPersonTracking(null, 60 * 1000 * 1000, mPersonTrackingListener);
         }
         mPresenterChangeInterface.showToast("initiate tracking....");
